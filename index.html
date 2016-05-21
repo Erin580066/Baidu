@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,ul,input{margin:0;padding:0;}
+			li{list-style:none;}
+			a{text-decoration: none;}
+			img{display:block;margin:50px auto;}
+			#box{width:638px;height:38px;border:1px solid #3388ff;margin:0 auto;}
+			input{float:left;width:533px;height:36px;border:1px solid #fff;}
+			span{float:left;width:103px;height:38px;color:#fff;background:#3388ff;text-align: center;line-height:38px;}
+			#list{float:left;width:638px;border:1px solid #ededed;margin-top:1px;display:none;}
+			#list li a{line-height:30px;padding:5px;color:#000;display:block;}
+			#list li a:hover{background:gray;color:#fff;}
+			
+		</style>
+	</head>
+	<body>
+		<img src="2.png" alt="" />
+		<div id="box">
+			<input type="text" id="p"/>
+			<span>百度一下</span>
+			<ul id="list">
+				<li><a href="javascript:;">111111111</a></li>
+				<li><a href="javascript:;">111111111</a></li>
+				<li><a href="javascript:;">111111111</a></li>
+				<li><a href="javascript:;">111111111</a></li>
+				<li><a href="javascript:;">111111111</a></li>
+				<li><a href="javascript:;">111111111</a></li>
+			</ul>
+		</div>
+		<script type="text/javascript" src="jquery-2.2.2.min.js" ></script>
+		<script type="text/javascript">
+			function fn(data){
+				var oList = document.getElementById("list");
+				var html = '';
+				if(data.s.length){
+					oList.style.display = 'block';
+					for (var i = 0; i < data.s.length; i++) {
+						html += '<li><a href="">'+data.s[i]+'</a></li>';
+					}
+					oList.innerHTML = html;
+				}else{
+					oList.style.display = 'none';
+				}
+			}
+			var oP =document.getElementById("p");
+			var oList = document.getElementById("list");
+			oP.onkeyup = function(){
+				if(this.value!=''){
+					var oScript = document.createElement('script');
+					oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+this.value+'&cb=fn';
+					document.body.appendChild(oScript)
+				}else{
+					oList.style.display = 'none';
+				}
+			}
+		</script>
+	</body>
+</html>
+
